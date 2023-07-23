@@ -14,8 +14,9 @@ I've generated a random 4-digit number for you.
     print(pozdrav)
 
 def generate_secret_number():
-    digits = random.sample(range(10), 4)
-    return ''.join(str(digit) for digit in digits)
+    digits = random.sample(range(1, 10), 4)
+    random_number = ''.join(str(digit) for digit in digits)
+    return int(random_number)
 
 def get_user_guess():
     guess = input("Enter a number:\n-----------------------------------------------\n>>> ")
@@ -27,10 +28,10 @@ def get_user_guess():
 def compare_numbers(secret_number, user_guess):
     bulls = 0
     cows = 0
-    for i in range(4):
-        if user_guess[i] == secret_number[i]:
+    for num in range(4):
+        if user_guess[num] == secret_number[num]:
             bulls += 1
-        elif user_guess[i] in secret_number:
+        elif user_guess[num] in secret_number:
             cows += 1
     return bulls, cows
 
